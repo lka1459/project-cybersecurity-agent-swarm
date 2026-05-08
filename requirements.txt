@@ -1,0 +1,15 @@
+transformers
+sentence-transformers
+scikit-learn
+langchain
+langchain-community
+langchain-openai
+openai
+pandas
+numpy
+torch
+faiss-cpu
+matplotlib
+jupyter
+ipykernel
+python-dotenv
