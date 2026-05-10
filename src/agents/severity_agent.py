@@ -15,7 +15,7 @@ class SeverityAgent:
         pass
 
 
-    def severity_score(self, cve_text, classification_result) -> Dict[str, float]:
+    def severity_score(self, cve_text: str, classification_result: Dict[str, str | float]) -> Dict[str, float]:
         severity_regex: re.Pattern = r'\bSeverity: \b(\w+)'
         cvss_regex: re.Pattern = r'\bCVSS Score: \b([+-]?\d+\.\d+)'
 

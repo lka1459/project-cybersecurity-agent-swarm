@@ -131,7 +131,3 @@ python src/main.py
 ```
 
 ---
-
-## Disclaimer
-
-This project is developed for educational and research purposes only.
