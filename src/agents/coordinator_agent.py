@@ -1,14 +1,4 @@
-import pandas as pd
-import numpy as np
-import re
 from typing import Dict, List
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-
-df: pd.DataFrame = pd.read_json(
-    "../../data/threat_intel_dataset.jsonl",
-    lines=True
-)
 
 class CoordinatorAgent:
     def __init__(self, threat_agent, severity_agent, mitigation_agent):

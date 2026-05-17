@@ -29,46 +29,101 @@ The system is designed around the concept of specialised agents, where each agen
 
 ### Threat Classification Agent
 
-Responsible for identifying the type of cybersecurity vulnerability.
+Responsible for identifying the likely cybersecurity threat category from raw CVE text using semantic similarity.
 
-Example classifications:
+Implemented using:
 
-* SQL Injection
-* Remote Code Execution
-* Cross-Site Scripting (XSS)
-* Privilege Escalation
-* Authentication Bypass
-* Denial of Service
+- Sentence Transformers (`all-MiniLM-L6-v2`)
+- Cosine similarity
+- Confidence thresholding
+
+Supported threat categories include:
+
+- SQL Injection
+- Cross-site Scripting (XSS)
+- Denial of Service (DOS)
+- Authentication Bypass
+- Privilege Escalation
+- Remote Code Execution
+- Credential Exposure
+- Information Disclosure
+- Directory Traversal
+- Brute Force
+- DNS Poisoning
+- Buffer Overflow
+- IP Spoofing
+- Unknown
 
 ### Severity Agent
 
 Determines the severity level of vulnerabilities using CVSS scores and contextual reasoning.
 
+Implemented using:
+
+- Regex-based extraction
+- CVSS score parsing
+- Severity classification
+- Contextual reasoning generation
+
+Extracted fields:
+
+- CVSS Score
+- Severity Level
+- Severity Explanation
+
+---
+
 ### Mitigation Agent
 
-Generates remediation recommendations and mitigation strategies.
+Responsible for generating remediation recommendations based on threat classification and severity.
 
-### Detection Rule Agent
+Implemented using:
 
-Produces detection logic and potential monitoring rules.
+- Rule-based mitigation templates
+- Severity-based response prioritisation
+- Threat-aware remediation logic
+
+Outputs include:
+
+- Response priority
+- Recommended mitigation actions
+- Mitigation reasoning
+
+---
+
 
 ### Coordinator Agent
 
 Combines outputs from all agents into a final structured threat intelligence report.
 
+Workflow:
+
+```text
+Raw CVE Input
+    ↓
+Threat Classification Agent
+    ↓
+Severity Agent
+    ↓
+Mitigation Agent
+    ↓
+Coordinator Agent
+    ↓
+Final Threat Intelligence Report
+```
+
 ---
 
 ## Technologies Used
 
-* Python
-* LangChain
-* HuggingFace Transformers
-* Sentence Transformers
-* Scikit-learn
-* FAISS
-* PyTorch
-* Pandas
-* NumPy
+- Python
+- Sentence Transformers
+- HuggingFace Transformers
+- Scikit-learn
+- Pandas
+- NumPy
+- PyTorch
+- Regular Expressions (Regex)
 
 ---
 
@@ -88,31 +143,52 @@ Dataset format:
 
 ---
 
-## Current Progress
+## Example Output
 
-### Completed
+Example generated report:
 
-* Initial project architecture
-* Threat Classification Agent prototype
-* Semantic similarity classification using sentence embeddings
-* GitHub project setup
+```text
+Threat Intelligence Summary
 
-### In Progress
+Threat Type: Remote Code Execution
+Confidence: 0.842
 
-* Severity analysis agent
-* Retrieval system using embeddings
-* Multi-agent orchestration workflow
+Severity: Critical
+CVSS Score: 9.8
+
+Reason:
+The Remote Code Execution threat has a severity of critical because of its CVSS score of 9.8.
+
+Recommended Actions:
+1. Apply vendor patches or upgrade affected software immediately.
+2. Restrict external access to the vulnerable service.
+3. Monitor logs for suspicious command execution activity.
+```
 
 ---
 
-## Future Improvements
+## Project Structure
 
-* Retrieval-Augmented Generation (RAG)
-* FAISS vector database integration
-* Improved semantic threat classification
-* Streamlit frontend/dashboard
-* Automated report generation
-* Similar CVE retrieval system
+```text
+project-root/
+│
+├── data/
+│   └── threat_intel_dataset.jsonl
+│
+├── src/
+│   ├── main.py
+│   └── agents/
+│       ├── threat_classification_agent.py
+│       ├── severity_agent.py
+│       ├── mitigation_agent.py
+│       └── coordinator_agent.py
+│
+├── notebooks/
+│   └── experiment.ipynb
+│
+├── requirements.txt
+└── README.md
+```
 
 ---
 
@@ -124,7 +200,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run the project:
+Run the system:
 
 ```bash
 python src/main.py
