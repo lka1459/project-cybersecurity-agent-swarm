@@ -1,0 +1,14 @@
+{
+  "records": 50,
+  "workers": 4,
+  "baseline_accuracy": 0.24,
+  "llm_alone_accuracy": 0.88,
+  "llm_alone_primary_accuracy": 0.58,
+  "hybrid_accuracy": 0.8,
+  "hybrid_primary_accuracy": 0.74,
+  "hybrid_helped_vs_llm_alone": 1,
+  "llm_alone_helped_vs_hybrid": 5,
+  "same_primary": 27,
+  "llm_alone_fallbacks": 1,
+  "seconds": 146.38
+}

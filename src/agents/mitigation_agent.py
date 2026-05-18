@@ -81,6 +81,42 @@ class MitigationAgent:
         "Monitor network traffic for suspicious or spoofed packets."
     ],
 
+    "Access Control Bypass": [
+        "Patch the affected software to restore proper access control enforcement.",
+        "Review authorization rules and deny access by default for protected resources.",
+        "Monitor logs for attempts to access restricted resources or bypass ACLs."
+    ],
+
+    "Command Injection": [
+        "Remove shell execution paths or replace them with safe library calls.",
+        "Validate and strictly allowlist command parameters supplied by users.",
+        "Run affected services with least privilege and monitor for suspicious process execution."
+    ],
+
+    "Port Scanning / Proxy Abuse": [
+        "Disable verbose proxy-like functionality or restrict it to trusted administrators.",
+        "Filter outbound connections from the affected service to internal networks.",
+        "Monitor for unusual connection attempts or port probing through the vulnerable service."
+    ],
+
+    "Memory Corruption": [
+        "Apply vendor patches or upgrade to a memory-safe fixed version immediately.",
+        "Enable exploit mitigations such as ASLR, DEP, and stack protections where available.",
+        "Monitor for crashes, abnormal memory faults, or suspicious process behavior."
+    ],
+
+    "File Inclusion": [
+        "Validate and allowlist file paths or include targets.",
+        "Disable remote file inclusion and restrict interpreter include paths.",
+        "Monitor for suspicious file path parameters and unexpected script execution."
+    ],
+
+    "Insecure Update / Supply Chain": [
+        "Enforce cryptographic validation for updates and downloaded packages.",
+        "Restrict update sources to trusted vendor-controlled endpoints.",
+        "Monitor update traffic and package integrity for signs of tampering."
+    ],
+
     "Unknown": [
         "Review the vulnerability manually for further investigation.",
         "Monitor affected systems for suspicious behaviour.",
